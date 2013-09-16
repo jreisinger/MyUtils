@@ -15,7 +15,7 @@ my %MB = (
 
 for ( sort keys %MB )
 {
-    is( bytesToMeg($_), $MB{$_} );
+    is( bytesToMeg($_), $MB{$_}, "Convert $_ bytes to $MB{$_} MB" );
 }
 
 done_testing();
