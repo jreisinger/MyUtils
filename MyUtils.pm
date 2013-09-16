@@ -1,3 +1,11 @@
+=head1 MyUtils
+
+MyUtils - useful Perl subroutines
+
+    perl -I/home/jreisinger/perl5lib -M'MyUtils(nsLookup)' -E 'say nsLookup("8.8.8.8", "openhouse.sk")'
+
+=cut
+
 package MyUtils;
 
 ########################
@@ -11,12 +19,6 @@ use utf8;
 use warnings qw( FATAL utf8 );
 use open qw( :encoding(UTF-8) :std );
 ########################
-
-=head1 MyUtils
-
-MyUtils - useful Perl subroutines
-
-    perl -I/home/jreisinger/perl5lib -M'MyUtils(nsLookup)' -E 'say nsLookup("8.8.8.8", "openhouse.sk")'
 
 =head1 VERSION
 
