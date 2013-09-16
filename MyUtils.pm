@@ -70,19 +70,26 @@ Version 0.01
 
 =head1 SYNOPSIS
 
-    # Installation
+Installation
+
     cd && git clone https://github.com/jreisinger/perl5lib
 
-    # Usage from inside a program
+Testing
+
+    prove -r $HOME/perl5lib/t
+
+Usage from inside a program
+
     use lib $ENV{HOME} . '/perl5lib';
     use MyUtils qw(bytesToMeg);
 
-    # Usage from command line
-    perl -I/home/jreisinger/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
+Usage from command line
+
+    perl -I$HOME/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
 
 =head1 DESCRIPTIONS
 
-The following functions are provided:
+The following functions are provided
 
 =over
 
