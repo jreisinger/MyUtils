@@ -1,14 +1,6 @@
-=head1 MyUtils
-
-MyUtils - useful Perl subroutines
-
-    perl -I/home/jreisinger/perl5lib -M'MyUtils(nsLookup)' -E 'say nsLookup("8.8.8.8", "openhouse.sk")'
-
-=cut
-
 package MyUtils;
 
-########################
+#--------------------------------------
 # Pragmas
 use v5.10.0;
 use strict;
@@ -18,25 +10,17 @@ use warnings;
 use utf8;
 use warnings qw( FATAL utf8 );
 use open qw( :encoding(UTF-8) :std );
-########################
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
 
 our $VERSION = v0.0.1;
 
-########################
+#--------------------------------------
 # Exports
 use Exporter qw(import);
 our @EXPORT_OK = qw(
   nsLookup
 );
-########################
 
-########################
+#--------------------------------------
 # Modules
 
 # Standard modules
@@ -45,22 +29,9 @@ our @EXPORT_OK = qw(
 
 # CPAN modules
 #use List::MoreUtils;
-########################
 
-########################
-# Configuration Parameters
-########################
-
-########################
+#--------------------------------------
 # Subroutines
-
-=head2 nsLookup
-
-This function returns the IP address of a host.
-
-    my $ip = nsLookup('8.8.8.8', 'openhouse.sk');
-
-=cut
 
 sub nsLookup
 {
@@ -79,13 +50,46 @@ sub nsLookup
     close $NSLOOKUP;
 }
 
-########################
+1;
+__END__
+
+=head1 NAME
+
+MyUtils - Perl subroutines useful for systems administration
+
+=head1 VERSION
+
+Version 0.01
+
+=head1 SYNOPSIS
+
+    # Installation
+    cd && git clone https://github.com/jreisinger/perl5lib
+
+    # Usage from inside a program
+    use lib $ENV{HOME} . '/perl5lib';
+    use MyUtils qw(nsLookup);
+
+    # Usage from command line
+    perl -I/home/jreisinger/perl5lib -M'MyUtils(nsLookup)' -E 'say nsLookup("8.8.8.8", "openhouse.sk")'
+
+=head1 DESCRIPTIONS
+
+The following functions are provided:
+
+=over
+
+=item nsLookup( $nameserver, $host )
+
+Returns the IP address of a $host.
+
+=back
 
 =head1 AUTHOR
 
 Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
 
-Inspired by
+Inspired by (or copied from :-)):
 
 =over 4
 
@@ -99,4 +103,4 @@ Inspired by
 
 =cut
 
-1;
+
