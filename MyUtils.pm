@@ -17,6 +17,7 @@ our $VERSION = v0.0.1;
 # Exports
 use Exporter qw(import);
 our @EXPORT_OK = qw(
+  bytesToMeg
   nsLookup
 );
 
@@ -32,6 +33,12 @@ our @EXPORT_OK = qw(
 
 #--------------------------------------
 # Subroutines
+
+sub bytesToMeg
+{
+    my $size = shift;
+    return sprintf "%.2f", $size / ( 1024 * 1024 );
+}
 
 sub nsLookup
 {
@@ -68,16 +75,20 @@ Version 0.01
 
     # Usage from inside a program
     use lib $ENV{HOME} . '/perl5lib';
-    use MyUtils qw(nsLookup);
+    use MyUtils qw(bytesToMeg);
 
     # Usage from command line
-    perl -I/home/jreisinger/perl5lib -M'MyUtils(nsLookup)' -E 'say nsLookup("8.8.8.8", "openhouse.sk")'
+    perl -I/home/jreisinger/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
 
 =head1 DESCRIPTIONS
 
 The following functions are provided:
 
 =over
+
+=item bytesToMeg( $bytes )
+
+Convert bytes to X.XXMB.
 
 =item nsLookup( $nameserver, $host )
 
