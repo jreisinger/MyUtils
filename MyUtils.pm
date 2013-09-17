@@ -146,6 +146,14 @@ L<http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html>
 
 =back
 
+=head1 LICENSE AND COPYRIGHT
+
+This module is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself. See L<perlartistic>.  This program is
+distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+
 =cut
 
 
