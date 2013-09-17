@@ -27,7 +27,7 @@ FUNCTIONS
         Return MB in X.XX format.
 
     sendMail( $to, $subject, $body )
-        Send email. Based on <perlfaq9>.
+        Send email. Based on <http://perldoc.perl.org/perlfaq9.html>.
 
     nsLookup( $nameserver, $host )
         Return the IP address of a $host.
@@ -37,10 +37,10 @@ AUTHOR
 
     Inspired by (or copied from :-)):
 
-    *   http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-librar
-        y.html
+    *   <http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-libra
+        ry.html>
 
-    *   http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse
+    *   <http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse>
 
     *   "The Otter Book" by David N. Blank-Edelman
 

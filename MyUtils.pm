@@ -126,8 +126,7 @@ Return MB in X.XX format.
 
 =item sendMail( $to, $subject, $body )
 
-Send email. Based on
-L<perlfaq9|http://perldoc.perl.org/perlfaq9.html#How-do-I-send-email%3F/>.
+Send email. Based on L<http://perldoc.perl.org/perlfaq9.html>.
 
 =item nsLookup( $nameserver, $host )
 
@@ -143,9 +142,10 @@ Inspired by (or copied from :-)):
 
 =over 4
 
-=item * http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html
+=item *
+L<http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html>
 
-=item * http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse
+=item * L<http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse>
 
 =item * "The Otter Book" by David N. Blank-Edelman
 
