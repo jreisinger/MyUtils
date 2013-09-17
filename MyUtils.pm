@@ -18,6 +18,7 @@ our $VERSION = v0.0.1;
 use Exporter qw(import);
 our @EXPORT_OK = qw(
   bytesToMeg
+  sendMail
   nsLookup
 );
 
@@ -25,11 +26,11 @@ our @EXPORT_OK = qw(
 # Modules
 
 # Standard modules
-#use List::Util;
-#use Scalar::Util;
+use Sys::Hostname qw(hostname);
 
 # CPAN modules
-#use List::MoreUtils;
+use Email::MIME;
+use Email::Sender::Simple;
 
 #--------------------------------------
 # Subroutines
@@ -38,6 +39,36 @@ sub bytesToMeg
 {
     my $size = shift;
     return sprintf "%.2f", $size / ( 1024 * 1024 );
+}
+
+sub sendMail
+{
+    my $receiver  = shift;
+    my $subject   = shift;
+    my $mail_body = shift;
+
+    # sender will the user running the program
+    my $host  = hostname;
+    my $login = getlogin || getpwuid($<) || "uknown";
+    my $from  = "$login\@$host";
+
+    # first, create your message
+    my $message = Email::MIME->create(
+        header_str => [
+            From    => $from,
+            To      => $receiver,
+            Subject => $subject,
+        ],
+        attributes => {
+            encoding => 'quoted-printable',
+            charset  => 'utf-8',
+        },
+        body_str => $mail_body,
+    );
+
+    # send the message
+    use Email::Sender::Simple qw(sendmail);
+    sendmail($message);
 }
 
 sub nsLookup
