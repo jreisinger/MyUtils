@@ -9,18 +9,13 @@ SYNOPSIS
 
         cd && git clone https://github.com/jreisinger/perl5lib
 
-    Testing
+    Testing (optional)
 
         prove -r $HOME/perl5lib/t
 
-    Usage from inside a program
+    Add this library to @INC (list of Perl libraries)
 
-        use lib $ENV{HOME} . '/perl5lib';
-        use MyUtils qw(bytesToMeg);
-
-    Usage from command line
-
-        perl -I$HOME/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
+        export PERL5LIB="$PERL5LIB:$HOME/perl5lib"     # can go into ~/.profile
 
 FUNCTIONS
     bytesToMeg( $bytes )
