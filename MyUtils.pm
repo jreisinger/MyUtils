@@ -43,9 +43,7 @@ sub bytesToMeg
 
 sub sendMail
 {
-    my $receiver  = shift;
-    my $subject   = shift;
-    my $mail_body = shift;
+    my ( $receiver, $subject, $mail_body ) = @_;
 
     # sender will the user running the program
     my $host  = hostname;
@@ -118,19 +116,22 @@ Usage from command line
 
     perl -I$HOME/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
 
-=head1 DESCRIPTIONS
-
-The following functions are provided
+=head1 FUNCTIONS
 
 =over
 
 =item bytesToMeg( $bytes )
 
-Convert bytes to X.XXMB.
+Return MB in X.XX format.
+
+=item sendMail( $to, $subject, $body )
+
+Send email. Based on
+L<perlfaq9|http://perldoc.perl.org/perlfaq9.html#How-do-I-send-email%3F/>.
 
 =item nsLookup( $nameserver, $host )
 
-Returns the IP address of a $host.
+Return the IP address of a $host.
 
 =back
 
