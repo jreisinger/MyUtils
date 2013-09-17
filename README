@@ -22,14 +22,15 @@ SYNOPSIS
 
         perl -I$HOME/perl5lib -M'MyUtils(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
 
-DESCRIPTIONS
-    The following functions are provided
-
+FUNCTIONS
     bytesToMeg( $bytes )
-        Convert bytes to X.XXMB.
+        Return MB in X.XX format.
+
+    sendMail( $to, $subject, $body )
+        Send email. Based on <perlfaq9>.
 
     nsLookup( $nameserver, $host )
-        Returns the IP address of a $host.
+        Return the IP address of a $host.
 
 AUTHOR
     Jozef 'j0se' Reisinger, "<jozef.reisinger at gmail.com>"
