@@ -19,6 +19,7 @@ use Exporter qw(import);
 our @EXPORT_OK = qw(
   bytesToMeg
   sendMail
+  getLongRunningProcs
   nsLookup
 );
 
@@ -31,6 +32,7 @@ use Sys::Hostname qw(hostname);
 # CPAN modules
 use Email::MIME;
 use Email::Sender::Simple;
+use Proc::ProcessTable;
 
 #--------------------------------------
 # Subroutines
@@ -67,6 +69,38 @@ sub sendMail
     # send the message
     use Email::Sender::Simple qw(sendmail);
     sendmail($message);
+}
+
+
+sub getLongRunningProcs
+{
+    my ( $user, $max_time ) = @_;
+
+    my $long_running_procs;
+
+    # Convert username to UID
+    my $uid = getpwnam($user);
+
+    # Dump all the information in the current process table
+    my $t = new Proc::ProcessTable;
+    foreach my $p ( @{ $t->table } )
+    {
+        # Skip uninteresting users
+        next unless $p->uid == $uid;
+
+        # For how long is the process running?
+        my $current_time = time;                       # seconds since the epoch
+        my $start_time   = $p->start;
+        my $run_time     = $current_time - $start_time;
+
+        if ( $run_time > $max_time )
+        {
+            push @$long_running_procs, $p->pid;
+        }
+
+    }
+
+    return $long_running_procs;                        # aref
 }
 
 sub nsLookup
@@ -122,6 +156,10 @@ Return MB in X.XX format.
 =item sendMail( $to, $subject, $body )
 
 Send email. Based on L<http://perldoc.perl.org/perlfaq9.html>.
+
+=item getLongRunningProcs( $user, $seconds )
+
+Return arrray reference with PIDs of $user's processes running for more than $seconds.
 
 =item nsLookup( $nameserver, $host )
 
