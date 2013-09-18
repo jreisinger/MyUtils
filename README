@@ -24,6 +24,10 @@ FUNCTIONS
     sendMail( $to, $subject, $body )
         Send email. Based on <http://perldoc.perl.org/perlfaq9.html>.
 
+    getLongRunningProcs( $user, $seconds )
+        Return arrray reference with PIDs of $user's processes running for
+        more than $seconds.
+
     nsLookup( $nameserver, $host )
         Return the IP address of a $host.
 
@@ -38,4 +42,11 @@ AUTHOR
     *   <http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse>
 
     *   "The Otter Book" by David N. Blank-Edelman
+
+LICENSE AND COPYRIGHT
+    This module is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself. See perlartistic. This program is
+    distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE.
 
