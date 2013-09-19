@@ -125,7 +125,7 @@ __END__
 
 =head1 NAME
 
-MyUtils - Perl subroutines useful for systems administration
+Local::OS - My Perl subroutines useful for systems administration
 
 =head1 VERSION
 
@@ -133,17 +133,7 @@ Version 0.01
 
 =head1 SYNOPSIS
 
-Installation
-
-    cd && git clone https://github.com/jreisinger/perl5lib
-
-Testing (optional)
-
-    prove -r $HOME/perl5lib/t
-
-Add this library to @INC (list of Perl libraries)
-
-    export PERL5LIB="$PERL5LIB:$HOME/perl5lib"     # can go into ~/.profile
+use Local::OS qw(<function1> <function2>);
 
 =head1 FUNCTIONS
 
