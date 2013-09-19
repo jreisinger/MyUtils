@@ -1,11 +1,11 @@
 MyUtils
 =======
 
-Some Perl subroutines that I find useful.
+Some Perl functions that I find useful.
 
 * Installation
 
-    cd && git clone https://github.com/jreisinger/MyUtils.git
+    cd && git clone https://github.com/jreisinger/MyUtils
 
 * Testing (optional)
 
