@@ -1,4 +1,4 @@
-package MyUtils;
+package Local::OS;
 
 #--------------------------------------
 # Pragmas
