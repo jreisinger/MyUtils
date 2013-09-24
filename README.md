@@ -13,7 +13,7 @@ Testing (optional)
 
 Adding to @INC (list of Perl library directories)
 
-    export PERL5LIB="$PERL5LIB:$HOME/MyUtils"     # can go into ~/.profile
+    export PERL5LIB="$PERL5LIB:$HOME/MyUtils/lib"     # can go into ~/.profile
 
 Documentation
 
