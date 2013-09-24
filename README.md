@@ -6,7 +6,7 @@ Some Perl functions that I find useful.
 Installation
 
     cd && git clone https://github.com/jreisinger/MyUtils
-    cpanm Email::MIME Email::Sender::Simple Proc::ProcessTable
+    cpanm Email::MIME Email::Sender::Simple Proc::ProcessTable DBI
 
 Testing (optional)
 
