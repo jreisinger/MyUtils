@@ -26,4 +26,4 @@ Usage from inside a program
 
 Usage from command line
 
-    perl -I$HOME/MyUtils -M'Local:OS(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
+    perl -I$HOME/MyUtils -M'Local::OS(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
