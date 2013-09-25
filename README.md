@@ -5,7 +5,11 @@ Some Perl functions that I find useful.
 
 Installation
 
-    cd && git clone https://github.com/jreisinger/MyUtils
+    cpanm local::lib
+    perl -I$HOME/perl5/lib/perl5/ -Mlocal::lib >> $HOME/.profile
+    
+    cd ~/perl5 && git clone https://github.com/jreisinger/MyUtils
+    
     cpanm Email::MIME Email::Sender::Simple Proc::ProcessTable DBI
 
 Testing (optional)
