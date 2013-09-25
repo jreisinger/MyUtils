@@ -35,32 +35,52 @@ use Nmap::Parser;
 sub listNetServices {
     my @hosts = @_;
 
-    my $services;
+    my $services; # HoH
 
+    # Anonymous subroutine
     my $nmap = sub {
         my $host = shift;    #Nmap::Parser::Host object, just parsed
-        print $host->hostname, ' (', $host->addr, ')',
-          " has these ports open:\n";
 
         for my $port ( $host->tcp_ports('open') ) {
 
             # Nmap::Parser::Host::Service object
             my $svc = $host->tcp_service($port);
 
-            my $service =
-              join( ' | ', $svc->name, $svc->product, $svc->version );
+            my $service = join( ' | ',
+                $svc->name    // '',
+                $svc->product // '',
+                $svc->version // '' );
 
-            push @{ $services->{$port}{$service} }, $host->hostname;
+            push @{ $services->{$port}{$service} },
+              $host->hostname . ' (' . $host->addr . ')';
 
         }
     };
 
     my $np = new Nmap::Parser;
-    $np->callback( $nmap );
+    $np->callback($nmap);
     $np->parsescan( '/usr/bin/nmap', '-sV', @hosts );
 
-    use Data::Dumper;
-    print Dumper \$services;
+    #use Data::Dumper;
+    #print Dumper \$services;
+
+    # Print report
+    for my $port ( sort keys %$services ) {
+
+        my $n_versions = keys %{ $services->{$port} };
+        next unless $n_versions > 1;
+
+        print "$port - $n_versions different versions on this port\n";
+
+        for my $version ( sort keys %{ $services->{$port} } ) {
+            print ' ' x 4 . $version . "\n";
+            for my $host ( sort @{ $services->{$port}{$version} } ) {
+                print ' ' x 8 . $host . "\n";
+            }
+        }
+    }
+
+    return;
 }
 
 1;
@@ -85,7 +105,9 @@ use Local::Sec qw(<function1> <function2>);
 
 =item listNetServices( @hosts )
 
-Are we running different versions of network services?
+Are we running different versions of network services (ex. SSH) on different
+hosts? Useful for identifying unpatched (old) versions of network services but
+we have to include a host with patched services into @hosts.
 
 =back
 
