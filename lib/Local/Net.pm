@@ -50,7 +50,7 @@ sub searchLDAP {
     my $args   = shift;
     my $server = $args->{server};
     my $filter = $args->{filter};
-    my @attrs  = @{ $args->{attrs} };
+    my $attrs  = $args->{attrs};
 
     my $port = getservbyname( 'ldap', 'tcp' ) || '389';
 
@@ -72,7 +72,7 @@ sub searchLDAP {
         base   => $basedn,
         scope  => $scope,
         filter => $filter,
-        attrs  => \@attrs,
+        attrs  => $attrs,
     );
     die 'Bad search: ' . $searchobj->error() if $searchobj->code();
 
@@ -110,8 +110,8 @@ use Local::OS qw(<function1> <function2>);
 
 Search LDAP $server and print @attributes of entries satisfying the $filter.
 Ex. searchLDAP( { server => "ldap.example.com", filter =>
-"(&(objectClass=organizationalPerson)(cn=Doe John))", attrs => [ qw( cn sn
-description ) ] } )
+"(&(objectClass=organizationalPerson)(cn=Doe John))", attrs => [ qw( cn sn l
+mail ) ] } )
 
 =back
 
