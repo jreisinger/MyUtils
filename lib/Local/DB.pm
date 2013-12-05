@@ -52,7 +52,7 @@ sub listMysqlStruct {
 
     my ( $user, $pw ) = _getCredentials;
 
-    my $start = 'mysql';    # connect initially to this database
+    my $start = 'information_schema';    # connect initially to this database
 
     # connect to the start MySQL database
     my $dbh =
