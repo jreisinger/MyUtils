@@ -16,7 +16,7 @@ our $VERSION = v0.0.1;
 #--------------------------------------
 # Exports
 use Exporter qw(import);
-our @EXPORT_OK = qw(
+our @EXPORT = qw(
   listNetServices
 );
 

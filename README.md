@@ -38,4 +38,4 @@ From inside a program
 
 From command line
 
-    perl -M'Local::OS(bytesToMeg)' -E 'say bytesToMeg(3789876) . "MB"'
+    perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
