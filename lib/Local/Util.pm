@@ -44,7 +44,7 @@ sub loadModule {
     };
 
     if ($@) {
-        print STDERR "Failed to load $module because: $@";
+        #print STDERR "Failed to load $module because: $@";
         return 0;
     } else {
         return 1;
@@ -69,9 +69,8 @@ use Local::Util qw(<function1> <function2>);
 
 =item loadModule( $module )
 
-Try to load a $module at runtime. Return 1 on success 0 otherwise (reason for
-failure is printed to STDERR). $module can be 'Module::Name' or
-'Module/Name.pm'.
+Try to load a $module at runtime. Return 1 on success 0 otherwise. $module can
+be 'Module::Name' or 'Module/Name.pm'.
 
 =back
 
