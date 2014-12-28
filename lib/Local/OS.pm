@@ -28,24 +28,31 @@ our @EXPORT_OK = qw(
 
 # Standard modules
 use Sys::Hostname qw(hostname);
+use File::Basename qw(dirname);
+use Cwd qw(abs_path);
 
 # CPAN modules
-use Email::MIME;
-use Email::Sender::Simple;
-use Proc::ProcessTable;
+
+# My modules
+use lib dirname( dirname abs_path $0) . '/lib';
+use Local::Util;
 
 #--------------------------------------
 # Subroutines
 
-sub bytesToMeg
-{
+sub bytesToMeg {
     my $size = shift;
     return sprintf "%.2f", $size / ( 1024 * 1024 );
 }
 
-sub sendMail
-{
+sub sendMail {
     my ( $receiver, $subject, $mail_body ) = @_;
+
+    # We need these modules
+    my @modules = qw( Email::MIME Email::Sender::Simple );
+    for (@modules) {
+        loadModule($_) or die;
+    }
 
     # sender will the user running the program
     my $host  = hostname;
@@ -71,10 +78,11 @@ sub sendMail
     sendmail($message);
 }
 
-
-sub getLongRunningProcs
-{
+sub getLongRunningProcs {
     my ( $user, $max_time ) = @_;
+
+    # We need this module
+    loadModule('Proc::ProcessTable') or die;
 
     my $long_running_procs;
 
@@ -83,8 +91,8 @@ sub getLongRunningProcs
 
     # Dump all the information in the current process table
     my $t = new Proc::ProcessTable;
-    foreach my $p ( @{ $t->table } )
-    {
+    foreach my $p ( @{ $t->table } ) {
+
         # Skip uninteresting users
         next unless $p->uid == $uid;
 
@@ -93,8 +101,7 @@ sub getLongRunningProcs
         my $start_time   = $p->start;
         my $run_time     = $current_time - $start_time;
 
-        if ( $run_time > $max_time )
-        {
+        if ( $run_time > $max_time ) {
             push @$long_running_procs, $p->pid;
         }
 
@@ -103,16 +110,14 @@ sub getLongRunningProcs
     return $long_running_procs;                        # aref
 }
 
-sub nsLookup
-{
+sub nsLookup {
     my ( $srv, $host ) = @_;
     my $nslookupexe = '/usr/bin/nslookup';
 
     open my $NSLOOKUP, '-|', "$nslookupexe $host $srv" or die "$!";
-    while (<$NSLOOKUP>)
-    {
+    while (<$NSLOOKUP>) {
         next unless /^Address/;
-        next if /#/;    # skip DNS server address
+        next if /#/;                                   # skip DNS server address
         s/^Address[^\d]+//;
         chomp;
         return $_;
