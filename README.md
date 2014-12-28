@@ -12,7 +12,7 @@ Installation
 
 Now you should logout/login or `source ~/.profile`.
 
-    cd ~/perl5 && git clone https://github.com/jreisinger/MyUtils
+    cd ~/perl5 && git clone git@github.com:jreisinger/MyUtils.git
 
 Testing
 -------
