@@ -10,7 +10,7 @@ Installation
     echo 'PERL5LIB=$HOME/perl5/MyUtils/lib:$PERL5LIB' >> ~/.profile
     perl -I$HOME/perl5/lib/perl5/ -Mlocal::lib >> ~/.profile
 
-Now you should logout/login or `source ~/.profile`
+Now you should logout/login or `source ~/.profile`.
 
     cd ~/perl5 && git clone https://github.com/jreisinger/MyUtils
 
