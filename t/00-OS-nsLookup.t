@@ -13,15 +13,13 @@ use Local::OS qw(nsLookup);    # <= tested function(s)
 my @SERVERS = qw(8.8.8.8 208.67.222.222);
 
 my %IPS = (
-    'openhouse.sk' => '178.79.159.217',
-    'zoznam.sk'    => '213.81.185.31',
-    'nexar.sk'     => '217.67.30.192',
+    'ist.ac.at' => '193.170.138.156',
+    'zoznam.sk' => '213.81.185.31',
+    'nexar.sk'  => '217.67.30.192',
 );
 
-for my $server (@SERVERS)
-{
-    for my $host ( keys %IPS )
-    {
+for my $server (@SERVERS) {
+    for my $host ( keys %IPS ) {
         is( nsLookup( $server, $host ),
             $IPS{$host}, "Looking up $host via $server" );
     }

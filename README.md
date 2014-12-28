@@ -13,7 +13,7 @@ Installation
 
 Testing (optional)
 
-    prove -r $HOME/perl5/MyUtils/t
+    cd $HOME/perl5/MyUtils && prove -l
 
 Documentation
 
