@@ -55,10 +55,6 @@ sub loadModule {
 
 Local::Util - helper subroutines
 
-=head1 VERSION
-
-Version 0.01
-
 =head1 SYNOPSIS
 
 use Local::Util qw(<function1> <function2>);

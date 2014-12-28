@@ -132,10 +132,6 @@ __END__
 
 Local::OS - My Perl subroutines useful for systems administration
 
-=head1 VERSION
-
-Version 0.01
-
 =head1 SYNOPSIS
 
 use Local::OS qw(<function1> <function2>);
@@ -165,19 +161,6 @@ Return the IP address of a $host.
 =head1 AUTHOR
 
 Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
-
-Inspired by (or copied from :-)):
-
-=over 4
-
-=item *
-L<http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html>
-
-=item * L<http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse>
-
-=item * "The Otter Book" by David N. Blank-Edelman
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 

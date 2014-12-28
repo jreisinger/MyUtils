@@ -39,3 +39,13 @@ From inside a program
 From command line
 
     perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
+
+
+Inspired by or copied from :-)
+------------------------------
+
+* http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html
+
+* http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse
+
+* "The Otter Book" by David N. Blank-Edelman
