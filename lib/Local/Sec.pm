@@ -114,11 +114,7 @@ __END__
 
 =head1 NAME
 
-Local::Sec - My security related Perl subroutines
-
-=head1 SYNOPSIS
-
-use Local::Sec qw(<function1> <function2>);
+Local::Sec - security related subroutines
 
 =head1 FUNCTIONS
 

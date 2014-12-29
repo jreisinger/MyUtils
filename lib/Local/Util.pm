@@ -44,6 +44,7 @@ sub loadModule {
     };
 
     if ($@) {
+
         #print STDERR "Failed to load $module because: $@";
         return 0;
     } else {
@@ -57,7 +58,7 @@ Local::Util - helper subroutines
 
 =head1 SYNOPSIS
 
-use Local::Util qw(<function1> <function2>);
+use Local::Util;
 
 =head1 FUNCTIONS
 
@@ -67,6 +68,11 @@ use Local::Util qw(<function1> <function2>);
 
 Try to load a $module at runtime. Return 1 on success 0 otherwise. $module can
 be 'Module::Name' or 'Module/Name.pm'.
+
+Loading error is stored in C<$@> and can propagate to die() if die() is
+use without arguments:
+
+    loadModule( $module ) or die;
 
 =back
 

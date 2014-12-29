@@ -23,7 +23,7 @@ Documentation
 -------------
 
     perldoc Local::<ModuleName>
-    
+
 To list available modules
 
     perldoc Local::<TAB>
@@ -34,7 +34,7 @@ Usage
 From inside a program
 
     use local::lib;  # in case you are using local::lib
-    use Local::<ModuleName> qw(<function1Name> [<function2Name>]);
+    use Local::<ModuleName>;
 
 From command line
 

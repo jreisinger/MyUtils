@@ -106,11 +106,7 @@ __END__
 
 =head1 NAME
 
-Local::DB - My Perl subroutines useful for database administration
-
-=head1 SYNOPSIS
-
-use Local::DB qw(<function1> <function2>);
+Local::DB - subroutines useful for database administration
 
 =head1 FUNCTIONS
 

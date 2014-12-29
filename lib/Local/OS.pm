@@ -130,11 +130,7 @@ __END__
 
 =head1 NAME
 
-Local::OS - My Perl subroutines useful for systems administration
-
-=head1 SYNOPSIS
-
-use Local::OS qw(<function1> <function2>);
+Local::OS - subroutines useful for systems administration
 
 =head1 FUNCTIONS
 

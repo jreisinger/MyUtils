@@ -91,11 +91,7 @@ __END__
 
 =head1 NAME
 
-Local::Net - My networking related Perl subroutines
-
-=head1 SYNOPSIS
-
-use Local::OS qw(<function1> <function2>);
+Local::Net - networking related subroutines
 
 =head1 FUNCTIONS
 
