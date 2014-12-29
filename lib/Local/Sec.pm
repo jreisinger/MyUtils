@@ -24,6 +24,7 @@ our @EXPORT = qw(
 # Modules
 
 # Standard modules
+use File::stat;
 
 # CPAN modules
 use local::lib;
@@ -32,14 +33,38 @@ use Nmap::Parser;
 #--------------------------------------
 # Subroutines
 
+sub isSafe {
+    my $path = shift;
+    my $info = stat($path);
+    return unless $info;
+
+    # owner neither superuser nor me
+    # the real uid is stored in the $< variable
+    if ( ( $info->uid != 0 ) && ( $info->uid != $< ) ) {
+        return 0;
+    }
+
+    # check whether group or other can write file.
+    # use 066 to detect either reading or writing
+    if ( $info->mode & 022 ) {
+
+        # someone else can write this
+        return 0 unless -d _;    # non-directories aren't safe
+
+        # but directories with the sticky bit (01000) are
+        return 0 unless $info->mode & 01000;
+    }
+    return 1;
+}
+
 sub listNetServices {
     my @hosts = @_;
 
-    my $services; # HoH
+    my $services;                # HoH
 
     # Anonymous subroutine
     my $nmap = sub {
-        my $host = shift;    #Nmap::Parser::Host object, just parsed
+        my $host = shift;        #Nmap::Parser::Host object, just parsed
 
         for my $port ( $host->tcp_ports('open') ) {
 
@@ -98,6 +123,17 @@ use Local::Sec qw(<function1> <function2>);
 =head1 FUNCTIONS
 
 =over
+
+=item isSafe( $file )
+
+If the file is writable by someone other than the owner or is owned by someone
+other than the current user or the superuser, it shouldn't be trusted. To
+figure out file ownership and permissions, the C<stat()> function is used.
+
+Return true (1) if $file is deemed safe false (0) otherwise. Return C<undef> if
+C<stat()> fails.
+
+Taken from I<Perl Cookbook>, recipe 8.17.
 
 =item listNetServices( @hosts )
 
