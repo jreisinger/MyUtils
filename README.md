@@ -7,7 +7,7 @@ Installation
 ------------
 
     cpanm local::lib
-    echo 'PERL5LIB=$HOME/perl5/MyUtils/lib:$PERL5LIB' >> ~/.profile
+    echo 'PERL5LIB=$HOME/perl5/MyUtils/lib:$PERL5LIB; export PERL5LIB;' >> ~/.profile
     perl -I$HOME/perl5/lib/perl5/ -Mlocal::lib >> ~/.profile
 
 Now you should logout/login or `source ~/.profile`.
