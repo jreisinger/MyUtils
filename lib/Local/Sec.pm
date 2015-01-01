@@ -1,5 +1,11 @@
 package Local::Sec;
 
+=head1 NAME
+
+Local::Sec - security related functions
+
+=cut
+
 #--------------------------------------
 # Pragmas
 use v5.10.0;
@@ -33,6 +39,22 @@ use Nmap::Parser;
 #--------------------------------------
 # Subroutines
 
+=head1 FUNCTIONS
+
+=head2 isSafe( $file )
+
+Return true (1) if $file is deemed safe false (0) otherwise. Return C<undef> if
+C<stat()> fails.
+
+If the file is writable by someone other than the owner or is owned by someone
+other than the current user or the superuser, it's not safe and shouldn't be
+trusted. To figure out file ownership and permissions, the C<stat()> function
+is used.
+
+Taken from I<Perl Cookbook>, recipe 8.17.
+
+=cut
+
 sub isSafe {
     my $path = shift;
     my $info = stat($path);
@@ -56,6 +78,14 @@ sub isSafe {
     }
     return 1;
 }
+
+=head2 listNetServices( @hosts )
+
+Are we running different versions of network services (ex. SSH) on different
+hosts? Useful for identifying unpatched (old) versions of network services but
+we have to include a host with patched services into @hosts.
+
+=cut
 
 sub listNetServices {
     my @hosts = @_;
@@ -110,36 +140,6 @@ sub listNetServices {
 
 1;
 
-__END__
-
-=head1 NAME
-
-Local::Sec - security related subroutines
-
-=head1 FUNCTIONS
-
-=over
-
-=item isSafe( $file )
-
-Return true (1) if $file is deemed safe false (0) otherwise. Return C<undef> if
-C<stat()> fails.
-
-If the file is writable by someone other than the owner or is owned by someone
-other than the current user or the superuser, it's not safe and shouldn't be
-trusted. To figure out file ownership and permissions, the C<stat()> function
-is used.
-
-Taken from I<Perl Cookbook>, recipe 8.17.
-
-=item listNetServices( @hosts )
-
-Are we running different versions of network services (ex. SSH) on different
-hosts? Useful for identifying unpatched (old) versions of network services but
-we have to include a host with patched services into @hosts.
-
-=back
-
 =head1 AUTHOR
 
 Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
@@ -153,5 +153,3 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 
 =cut
-
-

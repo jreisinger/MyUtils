@@ -91,7 +91,7 @@ __END__
 
 =head1 NAME
 
-Local::Net - networking related subroutines
+Local::Net - networking related functions
 
 =head1 FUNCTIONS
 

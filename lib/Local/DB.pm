@@ -106,7 +106,7 @@ __END__
 
 =head1 NAME
 
-Local::DB - subroutines useful for database administration
+Local::DB - functions useful for database administration
 
 =head1 FUNCTIONS
 

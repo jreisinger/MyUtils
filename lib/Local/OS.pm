@@ -130,7 +130,7 @@ __END__
 
 =head1 NAME
 
-Local::OS - subroutines useful for systems administration
+Local::OS - functions useful for systems administration
 
 =head1 FUNCTIONS
 

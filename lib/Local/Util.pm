@@ -54,7 +54,7 @@ sub loadModule {
 
 =head1 NAME
 
-Local::Util - helper subroutines
+Local::Util - helper functions
 
 =head1 SYNOPSIS
 
