@@ -122,12 +122,13 @@ Local::Sec - security related subroutines
 
 =item isSafe( $file )
 
-If the file is writable by someone other than the owner or is owned by someone
-other than the current user or the superuser, it shouldn't be trusted. To
-figure out file ownership and permissions, the C<stat()> function is used.
-
 Return true (1) if $file is deemed safe false (0) otherwise. Return C<undef> if
 C<stat()> fails.
+
+If the file is writable by someone other than the owner or is owned by someone
+other than the current user or the superuser, it's not safe and shouldn't be
+trusted. To figure out file ownership and permissions, the C<stat()> function
+is used.
 
 Taken from I<Perl Cookbook>, recipe 8.17.
 
