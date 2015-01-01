@@ -31,6 +31,8 @@ our @EXPORT = qw(
 
 # Standard modules
 use File::stat;
+use Cwd;
+use POSIX qw(sysconf _PC_CHOWN_RESTRICTED);
 
 # CPAN modules
 use local::lib;
@@ -67,15 +69,41 @@ sub isSafe {
     }
 
     # check whether group or other can write file.
-    # use 066 to detect either reading or writing
-    if ( $info->mode & 022 ) {
+    # (use 066 to detect either reading or writing)
+    if ( $info->mode & 022 ) {    # someone else can write this
 
-        # someone else can write this
-        return 0 unless -d _;    # non-directories aren't safe
+        # non-directories aren't safe
+        return 0 unless -d _;
 
         # but directories with the sticky bit (01000) are
         return 0 unless $info->mode & 01000;
     }
+    return 1;
+}
+
+=head2 isVerySafe( $file )
+
+Also ensure that enclosing directory is not writable. This is a problem on
+systems that allow users to make a file owned by someone else ("chown
+giveaway").
+
+=cut
+
+sub isVerySafe {
+    my $path = shift;
+
+    # we don't have "chown giveaway" problem
+    return isSafe($path) if sysconf(_PC_CHOWN_RESTRICTED);
+
+    $path = getcwd() . "/" . $path if $path !~ m{^/};
+    do {
+        return unless is_safe($path);
+        $path =~ s#([^/]+|/)$##;
+
+        # dirname
+        $path =~ s#/$## if length($path) > 1;    # last slash
+    } while length $path;
+
     return 1;
 }
 
@@ -90,11 +118,11 @@ we have to include a host with patched services into @hosts.
 sub listNetServices {
     my @hosts = @_;
 
-    my $services;                # HoH
+    my $services;    # HoH
 
     # Anonymous subroutine
     my $nmap = sub {
-        my $host = shift;        #Nmap::Parser::Host object, just parsed
+        my $host = shift;    #Nmap::Parser::Host object, just parsed
 
         for my $port ( $host->tcp_ports('open') ) {
 
