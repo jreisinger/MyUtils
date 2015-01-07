@@ -1,7 +1,8 @@
 MyUtils
 =======
 
-Some Perl functions that I find useful.
+Some Perl functions (subroutines) that I find useful for systems
+administration. I've developed and tested them on Debian, so far.
 
 Installation
 ------------
