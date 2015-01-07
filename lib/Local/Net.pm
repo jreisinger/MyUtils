@@ -1,5 +1,11 @@
 package Local::Net;
 
+=head1 NAME
+
+Local::Net - networking related functions
+
+=cut
+
 #--------------------------------------
 # Pragmas
 use v5.10.0;
@@ -24,6 +30,7 @@ our @EXPORT = qw(
 # Modules
 
 # Standard modules
+use Carp;
 
 # CPAN modules
 use Net::LDAP;
@@ -31,6 +38,15 @@ use Net::LDAP::LDIF;
 
 #--------------------------------------
 # Subroutines
+
+=head1 FUNCTIONS
+
+=head2 _getCredentials( )
+
+Ask binddn and password from the user and return it. Password won't be 
+shown while typed in.
+
+=cut
 
 sub _getCredentials {
 
@@ -46,11 +62,24 @@ sub _getCredentials {
     return $user, $pw;
 }
 
+=head2 searchLDAP( { server => $server, filter => $filter, attrs => [ @attributes ] } )
+
+Search LDAP $server and print @attributes of entries satisfying the $filter. Ex.: 
+    searchLDAP( {   
+        server => "ldap.example.com",
+        filter => "(&(objectClass=organizationalPerson)(cn=Doe John))",
+        attrs  => [ qw( cn sn l mail ) ] 
+    } )
+
+=cut
+
 sub searchLDAP {
     my $args   = shift;
     my $server = $args->{server};
     my $filter = $args->{filter};
     my $attrs  = $args->{attrs};
+
+    croak "Not enough arguments for searchLDAP()" unless keys %$args == 3;
 
     my $port = getservbyname( 'ldap', 'tcp' ) || '389';
 
@@ -87,25 +116,6 @@ sub searchLDAP {
 }
 
 1;
-__END__
-
-=head1 NAME
-
-Local::Net - networking related functions
-
-=head1 FUNCTIONS
-
-=over
-
-=item searchLDAP( { server => $server, filter => $filter, attrs => [
-@attributes ] } )
-
-Search LDAP $server and print @attributes of entries satisfying the $filter.
-Ex. searchLDAP( { server => "ldap.example.com", filter =>
-"(&(objectClass=organizationalPerson)(cn=Doe John))", attrs => [ qw( cn sn l
-mail ) ] } )
-
-=back
 
 =head1 AUTHOR
 
@@ -120,5 +130,3 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 
 =cut
-
-
