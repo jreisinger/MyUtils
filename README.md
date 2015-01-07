@@ -34,18 +34,18 @@ To get documentation for a certain module (i.e. group of functions)
 Usage
 -----
 
-1) Copy/paste the function(s) into your script. You might need to `use` some
-modules (see "Modules" section of the corresponding module in
-`~/bin/perl5/MyUtils/lib/<Module>.pm` if not sure which ones).
+1) Use from command line
 
-2) Use as a module from inside a program
+    perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
+
+2) Use as a module from inside your program
 
     use local::lib;  # in case you are using local::lib
     use Local::<ModuleName>;
 
-3) Use from command line
-
-    perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
+3) Copy/paste the function(s) into your script. You might need to `use` some
+modules (see "Modules" section of the corresponding module in
+`~/bin/perl5/MyUtils/lib/<Module>.pm` if not sure which ones).
 
 Inspired by or copied from :-)
 ------------------------------
