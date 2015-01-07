@@ -7,7 +7,7 @@ use Test::More;
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use lib dirname( dirname abs_path $0) . '/lib';
-use Local::OS;
+use Local::Misc;
 
 ################
 # bytesToMeg() #

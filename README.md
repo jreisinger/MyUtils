@@ -37,7 +37,7 @@ Usage
 
 1) Use from command line
 
-    perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
+    perl -MLocal::Misc -wE 'say bytesToMeg(3789876) . "MB"'
 
 2) Use as a module from inside your program
 

@@ -1,4 +1,10 @@
-package Local::OS;
+package Local::Misc;
+
+=head1 NAME
+
+Local::Misc - miscellaneous functions
+
+=cut
 
 #--------------------------------------
 # Pragmas
@@ -40,10 +46,24 @@ use Local::Util;
 #--------------------------------------
 # Subroutines
 
+=head1 FUNCTIONS
+
+=head2 bytesToMeg( $bytes )
+
+Return MB in X.XX format.
+
+=cut
+
 sub bytesToMeg {
     my $size = shift;
     return sprintf "%.2f", $size / ( 1024 * 1024 );
 }
+
+=head2 sendMail( $to, $subject, $body )
+
+Send email. Based on L<http://perldoc.perl.org/perlfaq9.html>.
+
+=cut
 
 sub sendMail {
     my ( $receiver, $subject, $mail_body ) = @_;
@@ -78,6 +98,12 @@ sub sendMail {
     sendmail($message);
 }
 
+=head2 getLongRunningProcs( $user, $seconds )
+
+Return arrray reference with PIDs of $user's processes running for more than $seconds.
+
+=cut
+
 sub getLongRunningProcs {
     my ( $user, $max_time ) = @_;
 
@@ -110,6 +136,12 @@ sub getLongRunningProcs {
     return $long_running_procs;                        # aref
 }
 
+=head2 nsLookup( $nameserver, $host )
+
+Return the IP address of a $host.
+
+=cut
+
 sub nsLookup {
     my ( $srv, $host ) = @_;
     my $nslookupexe = '/usr/bin/nslookup';
@@ -126,33 +158,6 @@ sub nsLookup {
 }
 
 1;
-__END__
-
-=head1 NAME
-
-Local::OS - functions useful for systems administration
-
-=head1 FUNCTIONS
-
-=over
-
-=item bytesToMeg( $bytes )
-
-Return MB in X.XX format.
-
-=item sendMail( $to, $subject, $body )
-
-Send email. Based on L<http://perldoc.perl.org/perlfaq9.html>.
-
-=item getLongRunningProcs( $user, $seconds )
-
-Return arrray reference with PIDs of $user's processes running for more than $seconds.
-
-=item nsLookup( $nameserver, $host )
-
-Return the IP address of a $host.
-
-=back
 
 =head1 AUTHOR
 
@@ -167,5 +172,3 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 
 =cut
-
-
