@@ -39,7 +39,7 @@ use DBI;
 
 =head1 FUNCTIONS
 
-=head2 _getCredentials()
+=head2 _getCredentials( )
 
 Ask username and password from the user and return it. Password won't be 
 shown while typed in.
