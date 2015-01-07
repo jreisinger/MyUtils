@@ -1,5 +1,11 @@
 package Local::Help;
 
+=head1 NAME
+
+Local::Help - helper functions (used by other modules)
+
+=cut
+
 #--------------------------------------
 # Pragmas
 use v5.10.0;
@@ -29,6 +35,20 @@ use File::Spec;
 #--------------------------------------
 # Subroutines
 
+=head1 FUNCTIONS
+
+=head2 loadModule( $module )
+
+Try to load a $module at runtime. Return 1 on success 0 otherwise. $module can
+be 'Module::Name' or 'Module/Name.pm'.
+
+Loading error is stored in C<$@> and can propagate to die() if die() is
+use without arguments:
+
+    loadModule( $module ) or die;
+
+=cut
+
 sub loadModule {
     my $module = shift;
 
@@ -52,29 +72,7 @@ sub loadModule {
     }
 }
 
-=head1 NAME
-
-Local::Help - helper functions (used by other modules)
-
-=head1 SYNOPSIS
-
-use Local::Help;
-
-=head1 FUNCTIONS
-
-=over
-
-=item loadModule( $module )
-
-Try to load a $module at runtime. Return 1 on success 0 otherwise. $module can
-be 'Module::Name' or 'Module/Name.pm'.
-
-Loading error is stored in C<$@> and can propagate to die() if die() is
-use without arguments:
-
-    loadModule( $module ) or die;
-
-=back
+1;
 
 =head1 AUTHOR
 
@@ -89,4 +87,3 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 
 =cut
-
