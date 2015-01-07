@@ -34,8 +34,9 @@ To get documentation for a certain module (i.e. group of functions)
 Usage
 -----
 
-1) Copy/paste the function(s) into your script (you might need to `use` some
-modules).
+1) Copy/paste the function(s) into your script. You might need to `use` some
+modules (see "Modules" section of the corresponding module in
+`~/bin/perl5/MyUtils/lib/<Module>.pm`).
 
 2) Use as a module from inside a program
 
