@@ -41,7 +41,7 @@ use Cwd qw(abs_path);
 
 # My modules
 use lib dirname( dirname abs_path $0) . '/lib';
-use Local::Util;
+use Local::Help;
 
 #--------------------------------------
 # Subroutines

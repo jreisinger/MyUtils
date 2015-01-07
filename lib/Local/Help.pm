@@ -1,4 +1,4 @@
-package Local::Util;
+package Local::Help;
 
 #--------------------------------------
 # Pragmas
@@ -54,11 +54,11 @@ sub loadModule {
 
 =head1 NAME
 
-Local::Util - helper functions
+Local::Help - helper functions (used by other modules)
 
 =head1 SYNOPSIS
 
-use Local::Util;
+use Local::Help;
 
 =head1 FUNCTIONS
 

@@ -9,7 +9,7 @@ use Cwd qw(abs_path);
 use lib dirname( dirname abs_path $0) . '/lib';
 
 BEGIN {
-    use_ok 'Local::Util' || print "Bail out!\n";
+    use_ok 'Local::Help' || print "Bail out!\n";
 }
 
 ok( loadModule('File::Spec'),   "Core module loaded (File::Spec)" );
