@@ -31,12 +31,15 @@ To list available modules
 Usage
 -----
 
-From inside a program
+1) Copy/paste the function(s) into your script (you might need to `use` some
+modules).
+
+2) Use as a module from inside a program
 
     use local::lib;  # in case you are using local::lib
     use Local::<ModuleName>;
 
-From command line
+3) Use from command line
 
     perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
 

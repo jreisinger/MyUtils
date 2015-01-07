@@ -1,5 +1,11 @@
 package Local::DB;
 
+=head1 NAME
+
+Local::DB - functions useful for database administration
+
+=cut
+
 #--------------------------------------
 # Pragmas
 use v5.10.0;
@@ -31,6 +37,15 @@ use DBI;
 #--------------------------------------
 # Subroutines
 
+=head1 FUNCTIONS
+
+=head2 _getCredentials()
+
+Ask username and password from the user and return it. Password won't be 
+shown while typed in.
+
+=cut
+
 sub _getCredentials {
 
     print 'Enter username: ';
@@ -45,12 +60,20 @@ sub _getCredentials {
     return $user, $pw;
 }
 
+=head2 listMysqlStruct( { host => $host, file => $file } )
+
+List all databases and their basic table structures on a MySQL server. If $host
+is not defined it defaults to 'localhost', if file is not defined output goes
+to STDOUT.
+
+=cut
+
 sub listMysqlStruct {
     my $args = shift;
     my $host = $args->{host} // 'localhost';
     my $file = $args->{file} // undef;
 
-    my ( $user, $pw ) = _getCredentials;
+    my ( $user, $pw ) = _getCredentials();
 
     my $start = 'information_schema';    # connect initially to this database
 
@@ -102,24 +125,6 @@ sub listMysqlStruct {
 
 1;
 
-__END__
-
-=head1 NAME
-
-Local::DB - functions useful for database administration
-
-=head1 FUNCTIONS
-
-=over
-
-=item listMysqlStruct( { host => $host, file => $file } )
-
-List all databases and their basic table structures on a MySQL server. If $host
-is not defined it defaults to 'localhost', if file is not defined output goes
-to STDOUT.
-
-=back
-
 =head1 AUTHOR
 
 Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
@@ -133,5 +138,3 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.
 
 =cut
-
-
