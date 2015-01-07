@@ -22,11 +22,14 @@ Testing
 Documentation
 -------------
 
-    perldoc Local::<ModuleName>
-
-To list available modules
+Functions are grouped via modules. Module name reflects the area in which the
+function(s) might be useful. To list available modules
 
     perldoc Local::<TAB>
+
+To get documentation for a certain module (i.e. group of functions)
+
+    perldoc Local::<ModuleName>
 
 Usage
 -----
@@ -43,12 +46,9 @@ modules).
 
     perl -MLocal::OS -wE 'say bytesToMeg(3789876) . "MB"'
 
-
 Inspired by or copied from :-)
 ------------------------------
 
 * http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html
-
 * http://perlmaven.com/how-to-create-a-perl-module-for-code-reuse
-
 * "The Otter Book" by David N. Blank-Edelman
