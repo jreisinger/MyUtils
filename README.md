@@ -36,7 +36,7 @@ Usage
 
 1) Copy/paste the function(s) into your script. You might need to `use` some
 modules (see "Modules" section of the corresponding module in
-`~/bin/perl5/MyUtils/lib/<Module>.pm`).
+`~/bin/perl5/MyUtils/lib/<Module>.pm` in not sure which ones).
 
 2) Use as a module from inside a program
 
