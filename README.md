@@ -40,6 +40,16 @@ Usage
 
     perl -MLocal::Misc -le 'print scaleIt(3789876)'
 
+In case you use the function often, create a bash function in `~/.profile` for
+it:
+
+    function scaleit () {
+        perl -MLocal::Misc -le "print scaleIt($1)"
+    }
+
+After logging out/logging in or sourcing `~/.profile`, you can call it like
+`scaleit` from bash.
+
 2) Use as a module from inside your program
 
     use local::lib;  # in case you are using local::lib
