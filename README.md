@@ -38,7 +38,7 @@ Usage
 
 1) Use from command line
 
-    perl -MLocal::Misc -wE 'say bytesToMeg(3789876) . "MB"'
+    perl -MLocal::Misc -le 'print scaleIt(3789876)'
 
 2) Use as a module from inside your program
 

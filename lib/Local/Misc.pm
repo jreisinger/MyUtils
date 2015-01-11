@@ -23,7 +23,7 @@ our $VERSION = v0.0.1;
 # Exports
 use Exporter qw(import);
 our @EXPORT = qw(
-  bytesToMeg
+  scaleIt
   sendMail
   getLongRunningProcs
   nsLookup
@@ -48,15 +48,20 @@ use Local::Help;
 
 =head1 FUNCTIONS
 
-=head2 bytesToMeg( $bytes )
+=head2 scaleIt( $bytes )
 
-Return MB in X.XX format.
+Make sizes human readable
 
 =cut
 
-sub bytesToMeg {
-    my $size = shift;
-    return sprintf "%.2f", $size / ( 1024 * 1024 );
+sub scaleIt {
+    my $size_in_bytes = shift;
+
+    return unless defined $size_in_bytes;
+
+    my ( $size, $n ) = ( $size_in_bytes, 0 );
+    ++$n and $size /= 1024 until $size < 1024;
+    return sprintf "%.0f%s", $size, (qw[ B KB MB GB TB ])[$n];
 }
 
 =head2 sendMail( $to, $subject, $body )
@@ -149,7 +154,7 @@ sub nsLookup {
     open my $NSLOOKUP, '-|', "$nslookupexe $host $srv" or die "$!";
     while (<$NSLOOKUP>) {
         next unless /^Address/;
-        next if /#/;                                   # skip DNS server address
+        next if /#/;    # skip DNS server address
         s/^Address[^\d]+//;
         chomp;
         return $_;
