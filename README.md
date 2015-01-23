@@ -34,10 +34,13 @@ Installation
 ------------
 
     cpanm local::lib
-    echo 'PERL5LIB=$HOME/perl5/MyUtils/lib:$PERL5LIB; export PERL5LIB;' >> ~/.profile
-    perl -I$HOME/perl5/lib/perl5/ -Mlocal::lib >> ~/.profile
+    cat >> ~/.bashrc <<"EOF"
+    if [ -d "$HOME/perl5/lib/perl5" ]; then
+        [ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+    fi
+    EOF
 
-Now you should logout/login or `source ~/.profile`.
+Now you should logout/login or `source ~/.bashrc`.
 
     cd ~/perl5 && git clone git@github.com:jreisinger/MyUtils.git
 
