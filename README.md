@@ -7,9 +7,7 @@ administration. I've developed and tested them on Debian, so far.
 Usage
 -----
 
-1) The easiest way is to copy/paste the function(s) into your script. You might 
-need to `use` some modules (see "Modules" section of the corresponding module 
-in `~/bin/perl5/MyUtils/lib/<Module>.pm` if not sure which ones).
+1) The easiest way is to copy/paste the function(s) into your script.
 
 For the following two ways you will need to install the software - see *Installation* below.
 
