@@ -1,8 +1,8 @@
 MyUtils
 =======
 
-Some Perl functions (subroutines) that I find useful for systems
-administration. I've developed and tested them on Debian, so far.
+Some Perl functions that I find useful (mostly) for systems administration.
+I've developed and tested them on Debian, so far.
 
 Usage
 -----
@@ -33,14 +33,10 @@ After logging out/logging in or sourcing `~/.profile`, you can call it like
 Installation
 ------------
 
+    cd ~/perl5 && git clone git@github.com:jreisinger/MyUtils.git
     echo 'PERL5LIB=$HOME/perl5/MyUtils/lib:$PERL5LIB; export PERL5LIB;' >> ~/.profile
 
 Now you should logout/login or `source ~/.profile`.
-
-    cd ~/perl5 && git clone git@github.com:jreisinger/MyUtils.git
-
-Testing
--------
 
     cd $HOME/perl5/MyUtils && prove -l
 
