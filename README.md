@@ -44,8 +44,11 @@ Documentation
 -------------
 
 Functions are grouped via modules. Module name reflects the area in which the
-function(s) might be useful. To get documentation for a certain module (i.e.
-group of functions):
+function(s) might be useful. To list functions contained in a module:
+
+    ~/perl5/MyUtils/bin/list-functions
+
+To get documentation for a certain module (i.e. group of functions):
 
     perldoc Local::<ModuleName>
 
