@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use File::Basename;
+
+my %functions;
+
+for my $file ( glob "$Bin/../lib/Local/*.pm" ) {
+    my $file_contents = do {
+        local $/;
+        local @ARGV = ($file);
+        <>;
+    };
+    push @{ $functions{$file} }, $1
+      while $file_contents =~ /^\s*sub\s*(\w+)\s*{/mg;
+}
+
+for my $file ( sort keys %functions ) {
+    print( basename($file), "\n" );
+    print map "  $_\n", sort @{ $functions{$file} };
+}
+
