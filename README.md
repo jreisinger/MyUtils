@@ -7,7 +7,7 @@ I've developed and tested them on Debian, so far.
 Usage
 -----
 
-1) The easiest way is to copy/paste the function(s) into your script.
+1) The easiest way is to copy/paste the function(s) into your script. That's basically it.
 
 For the following two ways you will need to install the software - see *Installation* below.
 
