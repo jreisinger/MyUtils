@@ -22,7 +22,7 @@ my %MB = (
 
 for ( sort keys %MB )
 {
-    is( scaleIt($_), $MB{$_}, "Convert $_ bytes to $MB{$_} MB" );
+    is( scaleIt($_), $MB{$_}, "Convert $_ bytes to $MB{$_}" );
 }
 
 ##############
