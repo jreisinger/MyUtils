@@ -9,20 +9,20 @@ use Cwd qw(abs_path);
 use lib dirname( dirname abs_path $0) . '/lib';
 use Local::Misc;
 
-################
-# bytesToMeg() #
-################
+#############
+# scaleIt() #
+#############
 
 my %MB = (
-    0         => '0.00',
-    1         => '0.00',
-    123457    => 0.12,
-    999999999 => 953.67,
+    0         => '0B',
+    1         => '1B',
+    123457    => '121KB',
+    999999999 => '954MB',
 );
 
 for ( sort keys %MB )
 {
-    is( bytesToMeg($_), $MB{$_}, "Convert $_ bytes to $MB{$_} MB" );
+    is( scaleIt($_), $MB{$_}, "Convert $_ bytes to $MB{$_} MB" );
 }
 
 ##############
