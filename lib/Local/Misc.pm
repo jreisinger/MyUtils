@@ -23,6 +23,7 @@ our $VERSION = v0.0.1;
 # Exports
 use Exporter qw(import);
 our @EXPORT = qw(
+  getConfig
   scaleIt
   sendMail
   getLongRunningProcs
@@ -47,6 +48,36 @@ use Local::Help;
 # Subroutines
 
 =head1 FUNCTIONS
+
+=head2 getConfig( $file )
+
+Parse simple VAR=VALUE configuration file and return a hashref containing the
+configuration data. Comments and empty lines are allowed in the configuration
+file.
+
+Stolen from Perl Cookbook, 8.16.
+
+=cut
+
+sub getConfig {
+    my $file = shift;
+
+    my %config;
+
+    open my $fh, '<', $file or die "Can't open $file: $!\n";
+    while (<$fh>) {
+        chomp;       # no newline
+        s/#.*//;     # no comments
+        s/^\s+//;    # no leading white
+        s/\s+$//;    # no trailing white
+        next unless length;    # anything left?
+        my ( $var, $value ) = split( /\s*=\s*/, $_, 2 );
+        $config{$var} = $value;
+    }
+    close $fh;
+
+    return \%config;
+}
 
 =head2 scaleIt( $bytes )
 
