@@ -4,7 +4,7 @@ MyUtils
 Some Perl functions that I find useful (mostly) for systems administration.
 I've developed and tested them on Debian, so far.
 
-See also my [bin](https://github.com/jreisinger/dotfiles) directory and the [sys](https://github.com/jreisinger/sys) repo.
+See also my [bin](https://github.com/jreisinger/dotfiles/bin) directory and the [sys](https://github.com/jreisinger/sys) repo.
 
 Usage
 -----
