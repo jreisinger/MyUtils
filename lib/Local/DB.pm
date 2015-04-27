@@ -80,7 +80,7 @@ sub listMysqlStruct {
     # connect to the start MySQL database
     my $dbh =
       DBI->connect( "DBI:mysql:$start", $user, $pw,
-        { RaiseError => 1, ShowErrorStatement => 1 } );
+        { RaiseError => 1, PrintError => 1, ShowErrorStatement => 1 } );
 
     # find the databases on the server
     my $sth = $dbh->prepare(q{SHOW DATABASES});
