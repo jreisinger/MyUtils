@@ -14,6 +14,8 @@ my $builder = Module::Build->new(
     },
     build_requires => {
         'Test::More' => 0,
+        'Email::MIME'           => 0,
+        'Email::Sender::Simple' => 0,
     },
     requires => {
         #'ABC'              => 1.6,
