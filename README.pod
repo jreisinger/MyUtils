@@ -21,7 +21,7 @@ Copy/paste the function(s) into your script.
 Some Perl functions that I find useful (mostly) for systems administration.
 I've developed and tested them on Debian, so far.
 
-See also my [bin](https://github.com/jreisinger/dotfiles/tree/master/bin) directory and the [sys](https://github.com/jreisinger/sys) repo.
+See also my L<bin|https://github.com/jreisinger/dotfiles/tree/master/bin> directory and the L<sys|https://github.com/jreisinger/sys> repo.
 
 =head1 USAGE
 
