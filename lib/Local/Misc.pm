@@ -182,6 +182,8 @@ sub nsLookup {
     my ( $srv, $host ) = @_;
     my $nslookupexe = '/usr/bin/nslookup';
 
+    return unless -e $nslookupexe;
+
     open my $NSLOOKUP, '-|', "$nslookupexe $host $srv" or die "$!";
     while (<$NSLOOKUP>) {
         next unless /^Address/;

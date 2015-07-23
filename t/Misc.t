@@ -20,8 +20,7 @@ my %MB = (
     999999999 => '954MB',
 );
 
-for ( sort keys %MB )
-{
+for ( sort keys %MB ) {
     is( scaleIt($_), $MB{$_}, "Convert $_ bytes to $MB{$_}" );
 }
 
@@ -29,18 +28,23 @@ for ( sort keys %MB )
 # nsLookup() #
 ##############
 
-# Google and OpenDNS nameservers
-my @SERVERS = qw(8.8.8.8 208.67.222.222);
+SKIP: {
+    skip "/usr/bin/nslookup not present", 1
+      unless -e "/usr/bin/nslookup";
 
-my %IPS = (
-    'ist.ac.at' => '193.170.138.156',
-    'nexar.sk'  => '217.67.30.192',
-);
+    # Google and OpenDNS nameservers
+    my @SERVERS = qw(8.8.8.8 208.67.222.222);
 
-for my $server (@SERVERS) {
-    for my $host ( keys %IPS ) {
-        is( nsLookup( $server, $host ),
-            $IPS{$host}, "Looking up $host via $server" );
+    my %IPS = (
+        'ist.ac.at' => '193.170.138.156',
+        'nexar.sk'  => '217.67.30.192',
+    );
+
+    for my $server (@SERVERS) {
+        for my $host ( keys %IPS ) {
+            is( nsLookup( $server, $host ),
+                $IPS{$host}, "Looking up $host via $server" );
+        }
     }
 }
 
