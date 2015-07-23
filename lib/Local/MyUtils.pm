@@ -4,6 +4,8 @@ use 5.006;
 use strict;
 use warnings;
 
+=for HTML <a href="https://travis-ci.org/jreisinger/App-Monport"><img src="https://travis-ci.org/jreisinger/MyUtils.svg?branch=master"></a>
+
 =head1 NAME
 
 Local::MyUtils - functions that I find useful (mostly) for systems administration
