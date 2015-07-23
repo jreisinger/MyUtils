@@ -55,7 +55,7 @@ Now you should logout/login or `source ~/.profile`.
 
  cd $HOME/perl5/MyUtils && prove -l
 
-=head1 Documentation
+=head1 DOCUMENTATION
 
 Functions are grouped via modules. Module name reflects the area in which the
  function(s) might be useful. To list functions contained in a module:
@@ -78,7 +78,7 @@ L<http://github.com/jreisinger/MyUtils>
 
 Jozef Reisinger, E<lt>reisinge@cpan.orgE<gt>
 
-=head1 Inspired by or copied from :-)
+=head1 INSPIRED BY OR COPIED FROM :-)
 
 L<http://lookatperl.blogspot.co.il/2013/07/a-look-at-my-utility-library.html>
 
