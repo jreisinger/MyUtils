@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 
-=for HTML <a href="https://travis-ci.org/jreisinger/App-Monport"><img src="https://travis-ci.org/jreisinger/MyUtils.svg?branch=master"></a>
+=for HTML <a href="https://travis-ci.org/jreisinger/MyUtils"><img src="https://travis-ci.org/jreisinger/MyUtils.svg?branch=master"></a>
 
 =head1 NAME
 
