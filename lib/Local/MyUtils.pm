@@ -20,7 +20,7 @@ our $VERSION = '0.01';
 
 List available functions:
 
- $ ./bin/list-functions
+    $ ./bin/list-functions
 
 Copy/paste the function(s) into your script.
 
