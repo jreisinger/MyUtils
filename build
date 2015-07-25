@@ -1,0 +1,6 @@
+#!/bin/bash
+
+podselect lib/Local/MyUtils.pm > README.pod && \
+    perl Build.PL && \
+    ./Build && \
+    ./Build test

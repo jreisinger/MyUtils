@@ -27,37 +27,37 @@ For the following two ways you will need to install the software - see *Installa
 
 2) Use from command line
 
-    perl -MLocal::Misc -le 'print scaleIt(3789876)'
+ perl -MLocal::Misc -le 'print scaleIt(3789876)'
 
 In case you use the function often, create a bash function in `~/.profile` for
 it:
 
-    function scaleit () {
-        perl -MLocal::Misc -le "print scaleIt($1)"
-    }
+ function scaleit () {
+  perl -MLocal::Misc -le "print scaleIt($1)"
+ }
 
 After logging out/logging in or sourcing C<~/.profile>, you can call it like
 C<scaleit> from bash.
 
 3) Use as a module from inside your program
 
-    use local::lib;  # in case you are using local::lib
-    use Local::<ModuleName>;
+ use local::lib;  # in case you are using local::lib
+ use Local::<ModuleName>;
 
 =head1 INSTALLATION
 
-    perl Build.PL && ./Build && ./Build test && ./Build install
+ perl Build.PL && ./Build && ./Build test && ./Build install
 
 =head1 DOCUMENTATION
 
 Functions are grouped via modules. Module name reflects the area in which the
  function(s) might be useful. To get documentation for a certain module (i.e. group of functions):
 
-     perldoc Local::<ModuleName>
+ perldoc Local::<ModuleName>
 
 To list available modules (if you have completion working):
 
-     perldoc Local::<TAB>
+ perldoc Local::<TAB>
 
 =head1 SOURCE REPOSITORY
 
