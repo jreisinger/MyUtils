@@ -20,7 +20,8 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Copy/paste the function(s) into your script.
+Copy and paste the function(s) into your script or install the modules and use
+them from command line or from within your programs.
 
 =head1 DESCRIPTION
 
@@ -56,12 +57,15 @@ C<scaleit> from bash.
 
 =head1 INSTALLATION
 
+After cloning the repository, C<cd> to it and run:
+
  perl Build.PL && ./Build && ./Build test && ./Build install
 
 =head1 DOCUMENTATION
 
 Functions are grouped via modules. Module name reflects the area in which the
- function(s) might be useful. To get documentation for a certain module (i.e. group of functions):
+function(s) might be useful. To get documentation for a certain module
+(i.e. group of functions):
 
  perldoc Local::<ModuleName>
 
