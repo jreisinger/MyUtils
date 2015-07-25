@@ -43,7 +43,7 @@ use Net::LDAP::LDIF;
 
 =head2 _getCredentials( )
 
-Ask binddn and password from the user and return it. Password won't be 
+Ask binddn and password from the user and return it. Password won't be
 shown while typed in.
 
 =cut
@@ -64,11 +64,11 @@ sub _getCredentials {
 
 =head2 searchLDAP( { server => $server, filter => $filter, attrs => [ @attributes ] } )
 
-Search LDAP $server and print @attributes of entries satisfying the $filter. Ex.: 
-    searchLDAP( {   
+Search LDAP $server and print @attributes of entries satisfying the $filter. Ex.:
+    searchLDAP( {
         server => "ldap.example.com",
         filter => "(&(objectClass=organizationalPerson)(cn=Doe John))",
-        attrs  => [ qw( cn sn l mail ) ] 
+        attrs  => [ qw( cn sn l mail ) ]
     } )
 
 =cut
@@ -116,17 +116,3 @@ sub searchLDAP {
 }
 
 1;
-
-=head1 AUTHOR
-
-Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
-
-=head1 LICENSE AND COPYRIGHT
-
-This module is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See L<perlartistic>.  This program is
-distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-=cut

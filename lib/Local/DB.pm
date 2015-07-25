@@ -41,7 +41,7 @@ use DBI;
 
 =head2 _getCredentials( )
 
-Ask username and password from the user and return it. Password won't be 
+Ask username and password from the user and return it. Password won't be
 shown while typed in.
 
 =cut
@@ -124,17 +124,3 @@ sub listMysqlStruct {
 }
 
 1;
-
-=head1 AUTHOR
-
-Jozef 'j0se' Reisinger, C<< <jozef.reisinger at gmail.com> >>
-
-=head1 LICENSE AND COPYRIGHT
-
-This module is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See L<perlartistic>.  This program is
-distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-=cut
