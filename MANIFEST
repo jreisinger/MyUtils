@@ -4,3 +4,5 @@ lib/Local/MyUtils.pm
 MANIFEST			This list of files
 t/t
 t/xt
+MYMETA.json
+MYMETA.yml
