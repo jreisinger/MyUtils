@@ -23,6 +23,7 @@ our $VERSION = v0.0.1;
 # Exports
 use Exporter qw(import);
 our @EXPORT = qw(
+  justMe
   getConfig
   scaleIt
   sendMail
@@ -37,6 +38,7 @@ our @EXPORT = qw(
 use Sys::Hostname qw(hostname);
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
+use Fcntl qw(:flock);
 
 # CPAN modules
 
@@ -48,6 +50,23 @@ use Local::Help;
 # Subroutines
 
 =head1 FUNCTIONS
+
+=head2 justMe()
+
+Make sure only one instance of the program is running at a time. We do this by
+opening the lockfile on the program itself. For more see:
+http://perltricks.com/article/2/2015/11/4/Run-only-one-instance-of-a-program-at-a-time
+
+=cut
+
+sub justMe {
+
+    # NOTE: '<' avoids truncating the source code of the program running this code
+    open our $Lock, '<', $0 or die "Can't lock myself $0: $!";
+
+    flock $Lock, LOCK_EX | LOCK_NB
+      or die "Another instance of $0 is already running. Exiting ...\n";
+}
 
 =head2 getConfig( $file )
 
