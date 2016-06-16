@@ -70,6 +70,7 @@ sub isSafe {
 
     # check whether group or other can write file.
     # (use 066 to detect either reading or writing)
+    # see https://en.wikipedia.org/wiki/Bitwise_operation#AND
     if ( $info->mode & 022 ) {    # someone else can write this
 
         # non-directories aren't safe
