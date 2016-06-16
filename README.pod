@@ -49,7 +49,7 @@ C<scaleit> from bash.
 
 After cloning the repository, C<cd> to it and run:
 
- perl Build.PL && ./Build && ./Build test && ./Build install
+ perl Build.PL && ./Build installdeps && ./Build && ./Build test && ./Build install
 
 =head1 DOCUMENTATION
 
