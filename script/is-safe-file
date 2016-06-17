@@ -1,0 +1,44 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use autodie;
+use Getopt::Long;
+use Pod::Usage;
+use File::stat;
+use Local::Sec qw(isSafe);
+
+# Command line options
+GetOptions(
+    "h|?|help" => \( my $help ),
+) or pod2usage(1);
+
+# Help
+pod2usage( -exitval => 0, -verbose => 2, -noperldoc => 1 ) if $help;
+
+for my $file (@ARGV) {
+    unless ( my $rc = isSafe($file) ) {
+        print "'$file' is ", defined $rc
+          ? "not safe"
+          : "not stat()-able",
+          "\n";
+    }
+}
+
+__END__
+
+=head1 NAME
+
+is-safe-file - check whether a file is safe (to write)
+
+=head1 SYNOPSIS
+
+is-safe-file [options]
+
+  options:
+    -h, -?, --help  brief help message
+
+=head1 EXAMPLES
+
+  find . -print0 | xargs -0 is-safe-file
+
+=cut

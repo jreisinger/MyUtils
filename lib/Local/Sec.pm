@@ -23,6 +23,7 @@ our $VERSION = v0.0.1;
 # Exports
 use Exporter qw(import);
 our @EXPORT = qw(
+  isSafe
   listNetServices
 );
 
@@ -36,7 +37,6 @@ use POSIX qw(sysconf _PC_CHOWN_RESTRICTED);
 
 # CPAN modules
 use local::lib;
-use Nmap::Parser;
 
 #--------------------------------------
 # Subroutines
@@ -117,6 +117,8 @@ we have to include a host with patched services into @hosts.
 =cut
 
 sub listNetServices {
+    loadModule("Nmap::Parser") or die;
+
     my @hosts = @_;
 
     my $services;    # HoH
